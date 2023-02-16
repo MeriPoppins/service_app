@@ -4,6 +4,7 @@ from .models import Subscription
 
 
 class SubscriptionSerializer(serializers.ModelSerializer):
+    # обращение к связанным таблицам
     client_name = serializers.CharField(source='client.company_name')
     email = serializers.CharField(source='client.user.email')
 
