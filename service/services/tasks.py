@@ -20,6 +20,7 @@ def set_price(subscription_id):
                 ).first()
         subscription.price = subscription.annotated_price
         subscription.save()
+    # подчищаем кеш после внесений изменений
     cache.delete(settings.PRICE_CACHE_NAME)
 
 
@@ -32,4 +33,5 @@ def set_comment(subscription_id):
         subscription.comment = str(datetime.datetime.now())
         subscription.save()
 
+    # подчищаем кеш после внесений изменений
     cache.delete(settings.PRICE_CACHE_NAME)
